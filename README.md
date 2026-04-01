@@ -18,7 +18,7 @@
 - [How It Leaked](#how-it-leaked)
 - [What Is Claude Code?](#what-is-claude-code)
 - [Documentation](#-documentation)
-- [Missing Modules] (#missing-modules)
+- [Missing Modules](#missing-modules)
 - [Directory Structure](#directory-structure)
 - [Architecture](#architecture)
   - [Tool System](#1-tool-system)
