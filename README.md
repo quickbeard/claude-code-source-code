@@ -1,13 +1,6 @@
 <div align="center">
 
-# Claude Code Source Snapshot
-
-**An exploratory mirror of a source snapshot reportedly exposed via published source maps on March 31, 2026**
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-512K%2B_lines-3178C6?logo=typescript&logoColor=white)](#tech-stack)
-[![Bun](https://img.shields.io/badge/Runtime-Bun-f472b6?logo=bun&logoColor=white)](#tech-stack)
-[![Files](https://img.shields.io/badge/~1,900_files-source_only-grey)](#directory-structure)
-[![MCP Server](https://img.shields.io/badge/MCP-Explorer_Server-blueviolet)](#-explore-with-mcp-server)
+# Claude Code Source Code
 
 </div>
 
