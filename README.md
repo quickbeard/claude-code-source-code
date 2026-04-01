@@ -40,7 +40,7 @@
 
 ## What Is Claude Code?
 
-Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
+Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more.
 
 |                 |                                                                         |
 | --------------- | ----------------------------------------------------------------------- |
@@ -440,4 +440,4 @@ git push origin main
 
 ## Disclaimer
 
-This repository archives a source snapshot reportedly exposed via Anthropic's npm distribution on **2026-03-31**. It is provided for research, documentation, and exploratory tooling around the snapshot. The original Claude Code source remains the property of [Anthropic](https://www.anthropic.com), this is not an official release, and no rights to Anthropic's original code are granted by this repository. If you choose to use or redistribute any of the archived material, you are responsible for assessing the legal implications yourself.
+This repository archives a source code reportedly exposed via Anthropic's npm distribution on **2026-03-31**. The original Claude Code source remains the property of [Anthropic](https://www.anthropic.com), this is not an official release, and no rights to Anthropic's original code are granted by this repository. If you choose to use or redistribute any of the archived material, you are responsible for assessing the legal implications yourself.
