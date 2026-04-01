@@ -9,7 +9,7 @@
 ## Table of Contents
 
 - [How It Leaked](#how-it-leaked)
-- [What Is Claude Code?](#what-is-claude-code)
+- [Intro](#intro)
 - [Documentation](#-documentation)
 - [Missing Modules](#missing-modules)
 - [Directory Structure](#directory-structure)
@@ -38,7 +38,7 @@
 
 ---
 
-## What Is Claude Code?
+## Intro?
 
 Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more.
 
