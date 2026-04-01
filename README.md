@@ -9,8 +9,6 @@
 [![Files](https://img.shields.io/badge/~1,900_files-source_only-grey)](#directory-structure)
 [![MCP Server](https://img.shields.io/badge/MCP-Explorer_Server-blueviolet)](#-explore-with-mcp-server)
 
-> The raw imported snapshot is preserved in this repository's [`backup` branch](https://github.com/777genius/claude-code-source-code/tree/backup). The `main` branch contains added documentation, tooling, and repository metadata.
-
 </div>
 
 ## Table of Contents
