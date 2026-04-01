@@ -1,13 +1,6 @@
 <div align="center">
 
-# Claude Code Source Snapshot
-
-**An exploratory mirror of a source snapshot reportedly exposed via published source maps on March 31, 2026**
-
-[![TypeScript](https://img.shields.io/badge/TypeScript-512K%2B_lines-3178C6?logo=typescript&logoColor=white)](#tech-stack)
-[![Bun](https://img.shields.io/badge/Runtime-Bun-f472b6?logo=bun&logoColor=white)](#tech-stack)
-[![Files](https://img.shields.io/badge/~1,900_files-source_only-grey)](#directory-structure)
-[![MCP Server](https://img.shields.io/badge/MCP-Explorer_Server-blueviolet)](#-explore-with-mcp-server)
+# Claude Code Source Code
 
 </div>
 
@@ -16,7 +9,7 @@
 ## Table of Contents
 
 - [How It Leaked](#how-it-leaked)
-- [What Is Claude Code?](#what-is-claude-code)
+- [Intro](#intro)
 - [Documentation](#-documentation)
 - [Missing Modules](#missing-modules)
 - [Directory Structure](#directory-structure)
@@ -45,9 +38,9 @@
 
 ---
 
-## What Is Claude Code?
+## Intro
 
-Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
+Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more.
 
 |                 |                                                                         |
 | --------------- | ----------------------------------------------------------------------- |
@@ -447,4 +440,4 @@ git push origin main
 
 ## Disclaimer
 
-This repository archives a source snapshot reportedly exposed via Anthropic's npm distribution on **2026-03-31**. It is provided for research, documentation, and exploratory tooling around the snapshot. The original Claude Code source remains the property of [Anthropic](https://www.anthropic.com), this is not an official release, and no rights to Anthropic's original code are granted by this repository. If you choose to use or redistribute any of the archived material, you are responsible for assessing the legal implications yourself.
+This repository archives a source code reportedly exposed via Anthropic's npm distribution on **2026-03-31**. The original Claude Code source remains the property of [Anthropic](https://www.anthropic.com), this is not an official release, and no rights to Anthropic's original code are granted by this repository. If you choose to use or redistribute any of the archived material, you are responsible for assessing the legal implications yourself.
