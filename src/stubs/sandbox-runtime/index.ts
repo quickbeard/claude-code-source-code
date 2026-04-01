@@ -106,6 +106,101 @@ export class SandboxManager {
   setConfig(_config: SandboxRuntimeConfig): void {
     // Stub
   }
+
+  // Static methods used by sandbox-adapter.ts
+  static checkDependencies(_options?: { command?: string; args?: string[] }): SandboxDependencyCheck {
+    return { errors: ['Sandbox not available in external builds'], warnings: [] }
+  }
+
+  static isSupportedPlatform(): boolean {
+    return false
+  }
+
+  static async initialize(
+    _config: SandboxRuntimeConfig,
+    _askCallback?: SandboxAskCallback
+  ): Promise<void> {
+    // Stub - sandbox not available
+  }
+
+  static updateConfig(_config: SandboxRuntimeConfig): void {
+    // Stub
+  }
+
+  static async reset(): Promise<void> {
+    // Stub
+  }
+
+  static async wrapWithSandbox(
+    _command: string,
+    _options?: {
+      customConfig?: Partial<SandboxRuntimeConfig>
+      abortSignal?: AbortSignal
+    }
+  ): Promise<string> {
+    // Return command unchanged - no sandboxing
+    return _command
+  }
+
+  static getFsReadConfig(): FsReadRestrictionConfig {
+    return {}
+  }
+
+  static getFsWriteConfig(): FsWriteRestrictionConfig {
+    return {}
+  }
+
+  static getNetworkRestrictionConfig(): NetworkRestrictionConfig {
+    return {}
+  }
+
+  static getIgnoreViolations(): IgnoreViolationsConfig | undefined {
+    return undefined
+  }
+
+  static getAllowUnixSockets(): string[] | undefined {
+    return undefined
+  }
+
+  static getAllowLocalBinding(): boolean | undefined {
+    return undefined
+  }
+
+  static getEnableWeakerNestedSandbox(): boolean | undefined {
+    return undefined
+  }
+
+  static getProxyPort(): number | undefined {
+    return undefined
+  }
+
+  static getSocksProxyPort(): number | undefined {
+    return undefined
+  }
+
+  static getLinuxHttpSocketPath(): string | undefined {
+    return undefined
+  }
+
+  static getLinuxSocksSocketPath(): string | undefined {
+    return undefined
+  }
+
+  static async waitForNetworkInitialization(): Promise<void> {
+    // Stub - no network initialization needed
+  }
+
+  static getSandboxViolationStore(): SandboxViolationStore {
+    return new SandboxViolationStore()
+  }
+
+  static annotateStderrWithSandboxFailures(_command: string, stderr: string): string {
+    return stderr
+  }
+
+  static cleanupAfterCommand(): void {
+    // Stub
+  }
 }
 
 export class SandboxViolationStore {

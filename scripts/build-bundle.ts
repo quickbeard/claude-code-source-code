@@ -231,6 +231,7 @@ const buildOptions: esbuild.BuildOptions = {
     'fsevents',
     'sharp',
     'image-processor-napi',
+    'node-pty',
     // SDK packages (contain CommonJS that doesn't bundle well)
     '@anthropic-ai/sdk',
     '@anthropic-ai/sdk/*',
