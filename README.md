@@ -11,7 +11,55 @@
 
 </div>
 
-## Missing Modules Notice (108 modules)
+---
+
+## Table of Contents
+
+- [How It Leaked](#how-it-leaked)
+- [What Is Claude Code?](#what-is-claude-code)
+- [Documentation](#-documentation)
+- [Missing Modules](#missing-modules)
+- [Directory Structure](#directory-structure)
+- [Architecture](#architecture)
+  - [Tool System](#1-tool-system)
+  - [Command System](#2-command-system)
+  - [Service Layer](#3-service-layer)
+  - [Bridge System](#4-bridge-system)
+  - [Permission System](#5-permission-system)
+  - [Feature Flags](#6-feature-flags)
+- [Key Files](#key-files)
+- [Tech Stack](#tech-stack)
+- [Design Patterns](#design-patterns)
+- [GitPretty Setup](#gitpretty-setup)
+- [Disclaimer](#disclaimer)
+
+---
+
+## How It Leaked
+
+[Chaofan Shou (@Fried_rice)](https://x.com/Fried_rice) discovered that the published npm package for Claude Code included a `.map` file referencing the full, unobfuscated TypeScript source — downloadable as a zip from Anthropic's R2 storage bucket.
+
+> **"Claude code source code has been leaked via a map file in their npm registry!"**
+>
+> — [@Fried_rice, March 31, 2026](https://x.com/Fried_rice/status/2038894956459290963)
+
+---
+
+## What Is Claude Code?
+
+Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
+
+|                 |                                                                         |
+| --------------- | ----------------------------------------------------------------------- |
+| **Leaked**      | 2026-03-31                                                              |
+| **Language**    | TypeScript (strict)                                                     |
+| **Runtime**     | [Bun](https://bun.sh)                                                   |
+| **Terminal UI** | [React](https://react.dev) + [Ink](https://github.com/vadimdemedes/ink) |
+| **Scale**       | ~1,900 files · 512,000+ lines of code                                   |
+
+---
+
+## Missing Modules
 
 > **This source is incomplete.** 108 modules referenced by `feature()`-gated branches are **not included** in the npm package.
 > They exist only in Anthropic's internal monorepo and were dead-code-eliminated at compile time.
@@ -139,53 +187,6 @@ Bun's `feature()` is a **compile-time intrinsic**:
 
 ---
 
-## Table of Contents
-
-- [How It Leaked](#how-it-leaked)
-- [What Is Claude Code?](#what-is-claude-code)
-- [Documentation](#-documentation)
-- [Explore with MCP Server](#-explore-with-mcp-server)
-- [Directory Structure](#directory-structure)
-- [Architecture](#architecture)
-  - [Tool System](#1-tool-system)
-  - [Command System](#2-command-system)
-  - [Service Layer](#3-service-layer)
-  - [Bridge System](#4-bridge-system)
-  - [Permission System](#5-permission-system)
-  - [Feature Flags](#6-feature-flags)
-- [Key Files](#key-files)
-- [Tech Stack](#tech-stack)
-- [Design Patterns](#design-patterns)
-- [GitPretty Setup](#gitpretty-setup)
-- [Contributing](#contributing)
-- [Disclaimer](#disclaimer)
-
----
-
-## How It Leaked
-
-[Chaofan Shou (@Fried_rice)](https://x.com/Fried_rice) discovered that the published npm package for Claude Code included a `.map` file referencing the full, unobfuscated TypeScript source — downloadable as a zip from Anthropic's R2 storage bucket.
-
-> **"Claude code source code has been leaked via a map file in their npm registry!"**
->
-> — [@Fried_rice, March 31, 2026](https://x.com/Fried_rice/status/2038894956459290963)
-
----
-
-## What Is Claude Code?
-
-Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
-
-|                 |                                                                         |
-| --------------- | ----------------------------------------------------------------------- |
-| **Leaked**      | 2026-03-31                                                              |
-| **Language**    | TypeScript (strict)                                                     |
-| **Runtime**     | [Bun](https://bun.sh)                                                   |
-| **Terminal UI** | [React](https://react.dev) + [Ink](https://github.com/vadimdemedes/ink) |
-| **Scale**       | ~1,900 files · 512,000+ lines of code                                   |
-
----
-
 ## Documentation
 
 For in-depth guides, see the [`docs/`](docs/) directory:
@@ -199,122 +200,6 @@ For in-depth guides, see the [`docs/`](docs/) directory:
 | **[Exploration Guide](docs/exploration-guide.md)** | How to navigate the codebase — study paths, grep patterns, key files            |
 
 Also see: [CONTRIBUTING.md](CONTRIBUTING.md) · [MCP Server README](mcp-server/README.md)
-
----
-
-## Explore with MCP Server
-
-This repo also ships an [MCP server](https://modelcontextprotocol.io/) that lets any MCP-compatible client (Claude Code, Claude Desktop, VS Code Copilot, Cursor) explore the snapshot interactively.
-
-### Install from npm
-
-The MCP server is published as [`claude-code-explorer-mcp`](https://www.npmjs.com/package/claude-code-explorer-mcp) on npm — no need to clone the repo:
-
-```bash
-# Claude Code
-claude mcp add claude-code-explorer -- npx -y claude-code-explorer-mcp
-```
-
-### One-liner setup (from source)
-
-```bash
-git clone https://github.com/777genius/claude-code-source-code.git ~/claude-code-source-code \
-  && cd ~/claude-code-source-code/mcp-server \
-  && npm install && npm run build \
-  && claude mcp add claude-code-explorer -- node ~/claude-code-source-code/mcp-server/dist/index.js
-```
-
-<details>
-<summary><strong>Step-by-step setup</strong></summary>
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/777genius/claude-code-source-code.git
-cd claude-code-source-code/mcp-server
-
-# 2. Install & build
-npm install && npm run build
-
-# 3. Register with Claude Code
-claude mcp add claude-code-explorer -- node /absolute/path/to/claude-code-source-code/mcp-server/dist/index.js
-```
-
-Replace `/absolute/path/to/claude-code-source-code` with your actual clone path.
-
-</details>
-
-<details>
-<summary><strong>VS Code / Cursor / Claude Desktop config</strong></summary>
-
-**VS Code** — add to `.vscode/mcp.json`:
-
-```json
-{
-  "servers": {
-    "claude-code-explorer": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["${workspaceFolder}/mcp-server/dist/index.js"],
-      "env": { "CLAUDE_CODE_SRC_ROOT": "${workspaceFolder}/src" }
-    }
-  }
-}
-```
-
-**Claude Desktop** — add to your config file:
-
-```json
-{
-  "mcpServers": {
-    "claude-code-explorer": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/claude-code-source-code/mcp-server/dist/index.js"
-      ],
-      "env": {
-        "CLAUDE_CODE_SRC_ROOT": "/absolute/path/to/claude-code-source-code/src"
-      }
-    }
-  }
-}
-```
-
-**Cursor** — add to `~/.cursor/mcp.json` (same format as Claude Desktop).
-
-</details>
-
-### Available tools & prompts
-
-| Tool                 | Description                                                |
-| -------------------- | ---------------------------------------------------------- |
-| `list_tools`         | List all ~40 agent tools with source files                 |
-| `list_commands`      | List all ~50 slash commands with source files              |
-| `get_tool_source`    | Read full source of any tool (e.g. BashTool, FileEditTool) |
-| `get_command_source` | Read source of any slash command (e.g. review, mcp)        |
-| `read_source_file`   | Read any file from `src/` by path                          |
-| `search_source`      | Grep across the entire source tree                         |
-| `list_directory`     | Browse `src/` directories                                  |
-| `get_architecture`   | High-level architecture overview                           |
-
-| Prompt                  | Description                                            |
-| ----------------------- | ------------------------------------------------------ |
-| `explain_tool`          | Deep-dive into how a specific tool works               |
-| `explain_command`       | Understand a slash command's implementation            |
-| `architecture_overview` | Guided tour of the full architecture                   |
-| `how_does_it_work`      | Explain any subsystem (permissions, MCP, bridge, etc.) |
-| `compare_tools`         | Side-by-side comparison of two tools                   |
-
-**Try asking:** _"How does the BashTool work?"_ · _"Search for where permissions are checked"_ · _"Show me the /review command source"_
-
-### Custom source path / Remove
-
-```bash
-# Custom source location
-claude mcp add claude-code-explorer -e CLAUDE_CODE_SRC_ROOT=/path/to/src -- node /path/to/mcp-server/dist/index.js
-
-# Remove
-claude mcp remove claude-code-explorer
-```
 
 ---
 
@@ -557,14 +442,6 @@ git push origin main
 ```
 
 </details>
-
----
-
-## Contributing
-
-Contributions to documentation, the MCP server, and exploration tooling are welcome. Changes to the archived snapshot under `src/` are not the default contribution path. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-> **Note:** The `src/` directory is the archived source snapshot and should generally remain unchanged.
 
 ---
 
