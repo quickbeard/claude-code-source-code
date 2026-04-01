@@ -38,7 +38,7 @@
 
 ---
 
-## Intro?
+## Intro
 
 Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more.
 
