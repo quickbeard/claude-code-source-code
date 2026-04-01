@@ -1756,8 +1756,5 @@ export function setPromptId(id: string | null): void {
   STATE.promptId = id
 }
 
-// Stub for missing REPL bridge functionality (not available in external builds)
-export function isReplBridgeActive(): boolean {
-  return false
-}
+
 

@@ -68,12 +68,7 @@ export type MaxVersionConfig = {
  * This approach keeps version comparison logic simple while maintaining traceability via the SHA.
  */
 export async function assertMinVersion(): Promise<void> {
-  // Bypass version check for external builds
-  if (process.env.NODE_ENV === 'test' || process.env.SKIP_VERSION_CHECK === '1') {
-    return
-  }
-  // Always skip for leaked/dev builds
-  if (MACRO.VERSION.includes('leaked') || MACRO.VERSION === '0.0.0-dev') {
+  if (process.env.NODE_ENV === 'test') {
     return
   }
 
