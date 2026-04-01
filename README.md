@@ -11,7 +11,55 @@
 
 </div>
 
-## Missing Modules Notice (108 modules)
+---
+
+## Table of Contents
+
+- [How It Leaked](#how-it-leaked)
+- [What Is Claude Code?](#what-is-claude-code)
+- [Documentation](#-documentation)
+- [Missing Modules] (#missing-modules)
+- [Directory Structure](#directory-structure)
+- [Architecture](#architecture)
+  - [Tool System](#1-tool-system)
+  - [Command System](#2-command-system)
+  - [Service Layer](#3-service-layer)
+  - [Bridge System](#4-bridge-system)
+  - [Permission System](#5-permission-system)
+  - [Feature Flags](#6-feature-flags)
+- [Key Files](#key-files)
+- [Tech Stack](#tech-stack)
+- [Design Patterns](#design-patterns)
+- [GitPretty Setup](#gitpretty-setup)
+- [Disclaimer](#disclaimer)
+
+---
+
+## How It Leaked
+
+[Chaofan Shou (@Fried_rice)](https://x.com/Fried_rice) discovered that the published npm package for Claude Code included a `.map` file referencing the full, unobfuscated TypeScript source — downloadable as a zip from Anthropic's R2 storage bucket.
+
+> **"Claude code source code has been leaked via a map file in their npm registry!"**
+>
+> — [@Fried_rice, March 31, 2026](https://x.com/Fried_rice/status/2038894956459290963)
+
+---
+
+## What Is Claude Code?
+
+Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
+
+|                 |                                                                         |
+| --------------- | ----------------------------------------------------------------------- |
+| **Leaked**      | 2026-03-31                                                              |
+| **Language**    | TypeScript (strict)                                                     |
+| **Runtime**     | [Bun](https://bun.sh)                                                   |
+| **Terminal UI** | [React](https://react.dev) + [Ink](https://github.com/vadimdemedes/ink) |
+| **Scale**       | ~1,900 files · 512,000+ lines of code                                   |
+
+---
+
+## Missing Modules
 
 > **This source is incomplete.** 108 modules referenced by `feature()`-gated branches are **not included** in the npm package.
 > They exist only in Anthropic's internal monorepo and were dead-code-eliminated at compile time.
@@ -136,51 +184,6 @@ Bun's `feature()` is a **compile-time intrinsic**:
 - Returns `true` in Anthropic's internal build → code is kept in the bundle
 - Returns `false` in the published build → code is dead-code-eliminated
 - The 108 modules simply do not exist anywhere in the published artifact
-
----
-
-## Table of Contents
-
-- [How It Leaked](#how-it-leaked)
-- [What Is Claude Code?](#what-is-claude-code)
-- [Documentation](#-documentation)
-- [Directory Structure](#directory-structure)
-- [Architecture](#architecture)
-  - [Tool System](#1-tool-system)
-  - [Command System](#2-command-system)
-  - [Service Layer](#3-service-layer)
-  - [Bridge System](#4-bridge-system)
-  - [Permission System](#5-permission-system)
-  - [Feature Flags](#6-feature-flags)
-- [Key Files](#key-files)
-- [Tech Stack](#tech-stack)
-- [Design Patterns](#design-patterns)
-- [GitPretty Setup](#gitpretty-setup)
-- [Disclaimer](#disclaimer)
-
----
-
-## How It Leaked
-
-[Chaofan Shou (@Fried_rice)](https://x.com/Fried_rice) discovered that the published npm package for Claude Code included a `.map` file referencing the full, unobfuscated TypeScript source — downloadable as a zip from Anthropic's R2 storage bucket.
-
-> **"Claude code source code has been leaked via a map file in their npm registry!"**
->
-> — [@Fried_rice, March 31, 2026](https://x.com/Fried_rice/status/2038894956459290963)
-
----
-
-## What Is Claude Code?
-
-Claude Code is Anthropic's official CLI tool for interacting with Claude directly from the terminal: editing files, running commands, searching codebases, managing git workflows, and more. This repository contains a source snapshot together with added docs, MCP tooling, and repository metadata to help inspect it.
-
-|                 |                                                                         |
-| --------------- | ----------------------------------------------------------------------- |
-| **Leaked**      | 2026-03-31                                                              |
-| **Language**    | TypeScript (strict)                                                     |
-| **Runtime**     | [Bun](https://bun.sh)                                                   |
-| **Terminal UI** | [React](https://react.dev) + [Ink](https://github.com/vadimdemedes/ink) |
-| **Scale**       | ~1,900 files · 512,000+ lines of code                                   |
 
 ---
 
