@@ -192,8 +192,6 @@ For in-depth guides, see the [`docs/`](docs/) directory:
 | **[Subsystems Guide](docs/subsystems.md)**         | Deep dives into Bridge, MCP, Permissions, Plugins, Skills, Tasks, Memory, Voice |
 | **[Exploration Guide](docs/exploration-guide.md)** | How to navigate the codebase — study paths, grep patterns, key files            |
 
-Also see: [CONTRIBUTING.md](CONTRIBUTING.md) · [MCP Server README](mcp-server/README.md)
-
 ---
 
 ## Directory Structure
